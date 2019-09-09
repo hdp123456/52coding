@@ -11,9 +11,9 @@
   1. 图二中的代码逻辑较为集中，活动为活动，任务为任务
   2. 即便任务没有但是活动也可以有
 ##**示例二**
-#### ***更改前：***
+#### **更改前：**
   ![图一](./images/image3.png)
-#### ***更改后：***
+#### **更改后：**
   ![图二](./images/image4.png)
   
 ###### 通过两张图可以明显看到：第二张图代码更规范、更符合业务逻辑
@@ -24,9 +24,9 @@
   这就存在每activity_task_order:activity_id映射到多条activity_order_info，如此将导致结果出错；同样的若以activity_order_info映射activity_task_order也存在这种情况；
   除非两表都加上activity_date做限制才能唯一。后面对表做了改动，两表都增加customer_id(虽然冗余，但是效果好)，查询时去除activity_order_info表
 ##**示例三**
-#### ***更改前：***
+#### **更改前：**
   ![图一](./images/image5.png)
-#### ***更改后：***
+#### **更改后：**
   ![图二](./images/image6.png)
   
 ###### 通过这两张图明显可以看到：两张图都使用了java8的stream，使用stream可以简化统计、简化查询，
