@@ -1,7 +1,7 @@
 
 #**记编写业代码中遇到的问题**
 
-##**示例一**
+##**代码逻辑的规范性**
 #### **更改前：**
 
  ![图一](./images/image1.png)
@@ -13,7 +13,7 @@
   1. 图二中的代码逻辑较为集中，活动为活动，任务为任务
   2. 即便任务没有但是活动也可以有
 
-##**示例二**
+##**业务代码需要考虑的点**
 #### **更改前：**
 
  ![图一](./images/image3.png)
@@ -29,7 +29,7 @@
   这就存在每activity_task_order:activity_id映射到多条activity_order_info，如此将导致结果出错；同样的若以activity_order_info映射activity_task_order也存在这种情况；
   除非两表都加上activity_date做限制才能唯一。后面对表做了改动，两表都增加customer_id(虽然冗余，但是效果好)，查询时去除activity_order_info表
 
-##**示例三**
+##**java8中stream的妙用**
 #### **更改前：**
 
  ![图一](./images/image5.png)
