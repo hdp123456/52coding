@@ -12,6 +12,7 @@
 ###### 通过这两张图对比可以明显看到：第二张图处代码更规范、出错情况更小,比如：
   1. 图二中的代码逻辑较为集中，活动为活动，任务为任务
   2. 即便任务没有但是活动也可以有
+
 ##**示例二**
 #### **更改前：**
 
@@ -27,6 +28,7 @@
   3. 表设计本身：activity_task_order:activity_id映射activity_order_info:activity_id为多对一，但是activity_id在activity_order_info表里面不是唯一的,
   这就存在每activity_task_order:activity_id映射到多条activity_order_info，如此将导致结果出错；同样的若以activity_order_info映射activity_task_order也存在这种情况；
   除非两表都加上activity_date做限制才能唯一。后面对表做了改动，两表都增加customer_id(虽然冗余，但是效果好)，查询时去除activity_order_info表
+
 ##**示例三**
 #### **更改前：**
 
