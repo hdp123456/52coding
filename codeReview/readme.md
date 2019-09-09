@@ -11,18 +11,11 @@
   1. 图二中的代码逻辑较为集中，活动为活动，任务为任务
   2. 即便任务没有但是活动也可以有
 ##**示例二**
-<<<<<<< HEAD
 #### ***更改前：***
  ![图一](./images/image3.png)
 #### ***更改后：***
  ![图二](./images/image4.png)
-=======
-#### **更改前：**
-  ![图一](./images/image3.png)
-#### **更改后：**
-  ![图二](./images/image4.png)
->>>>>>> ddf71c366d3020fbfd864b40256c8ed163672b0e
-  
+
 ###### 通过两张图可以明显看到：第二张图代码更规范、更符合业务逻辑
 ######注意：
   1. 将distinct去掉了、该列表主要是查询，如果人为的对查询结果进行干涉，将导致查询结果出错，也就可能出现业务流程行不通的情况
@@ -31,18 +24,12 @@
   这就存在每activity_task_order:activity_id映射到多条activity_order_info，如此将导致结果出错；同样的若以activity_order_info映射activity_task_order也存在这种情况；
   除非两表都加上activity_date做限制才能唯一。后面对表做了改动，两表都增加customer_id(虽然冗余，但是效果好)，查询时去除activity_order_info表
 ##**示例三**
-<<<<<<< HEAD
+
 #### ***更改前：***
  ![图一](./images/image5.png)
 #### ***更改后：***
  ![图二](./images/image6.png)
-=======
-#### **更改前：**
-  ![图一](./images/image5.png)
-#### **更改后：**
-  ![图二](./images/image6.png)
->>>>>>> ddf71c366d3020fbfd864b40256c8ed163672b0e
-  
+
 ###### 通过这两张图明显可以看到：两张图都使用了java8的stream，使用stream可以简化统计、简化查询，
   1. 第一张图罗列了stream的一般使用；
   2. 第二张图结合stream的map分组，减少了查询数据库的次数（规定不能通过mapper映射解决，也不能在for循环中多次查询）；
