@@ -10,9 +10,9 @@
 ###### 通过这两张图对比可以明显看到：第二张图处代码更规范、出错情况更小
 ##**示例二**
 #### ***更改前：***
-  ![图一](./images/image3.png)
+ ![图一](./images/image3.png)
 #### ***更改后：***
-  ![图二](./images/image4.png)
+ ![图二](./images/image4.png)
   
 ###### 通过两张图可以明显看到：第二张图代码更规范、更符合业务逻辑
 ######注意：
@@ -23,9 +23,9 @@
   除非两表都加上activity_date做限制，后面对表做了改动，两表都增加customer_id(虽然冗余，但是效果好)，查询时去除activity_order_info表。
 ##**示例三**
 #### ***更改前：***
-  ![图一](./images/image5.png)
+ ![图一](./images/image5.png)
 #### ***更改后：***
-  ![图二](./images/image6.png)
+ ![图二](./images/image6.png)
   
 ###### 通过这两张图明显可以看到：两张图都使用了java8的stream，使用stream可以简化统计、简化查询，
   1. 第一张图罗列了stream的一般使用；
