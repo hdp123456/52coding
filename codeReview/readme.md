@@ -1,31 +1,47 @@
 
-#*记编写业代码中遇到的问题*
+#**记编写业代码中遇到的问题**
 
 ##**示例一**
-#### ***更改前：***
+#### **更改前：**
  ![图一](./images/image1.png)
-#### ***更改后：***
- ![图二](./images/image2.png) 
+#### **更改后：**
+ ![图二](./images/image2.png)
  
-###### 通过这两张图对比可以明显看到：第二张图处代码更规范、出错情况更小
+###### 通过这两张图对比可以明显看到：第二张图处代码更规范、出错情况更小,比如：
+  1. 图二中的代码逻辑较为集中，活动为活动，任务为任务
+  2. 即便任务没有但是活动也可以有
 ##**示例二**
+<<<<<<< HEAD
 #### ***更改前：***
  ![图一](./images/image3.png)
 #### ***更改后：***
  ![图二](./images/image4.png)
+=======
+#### **更改前：**
+  ![图一](./images/image3.png)
+#### **更改后：**
+  ![图二](./images/image4.png)
+>>>>>>> ddf71c366d3020fbfd864b40256c8ed163672b0e
   
 ###### 通过两张图可以明显看到：第二张图代码更规范、更符合业务逻辑
 ######注意：
-  1. 将distinct去掉了、该列表主要是查询，如果人为的对查询结果进行干涉，将导致查询结果出错，也就可能出现业务流程行不通的情况；
-  2. 将第一个left join 去除，该业务流程过程中不需要对活动订单再确认，原流程定义便是有活动订单的才可能有活动任务订单；
+  1. 将distinct去掉了、该列表主要是查询，如果人为的对查询结果进行干涉，将导致查询结果出错，也就可能出现业务流程行不通的情况
+  2. 将第一个left join 去除，该业务流程过程中不需要对活动订单再确认，原流程定义便是有活动订单的才可能有活动任务订单
   3. 表设计本身：activity_task_order:activity_id映射activity_order_info:activity_id为多对一，但是activity_id在activity_order_info表里面不是唯一的,
   这就存在每activity_task_order:activity_id映射到多条activity_order_info，如此将导致结果出错；同样的若以activity_order_info映射activity_task_order也存在这种情况；
-  除非两表都加上activity_date做限制，后面对表做了改动，两表都增加customer_id(虽然冗余，但是效果好)，查询时去除activity_order_info表。
+  除非两表都加上activity_date做限制才能唯一。后面对表做了改动，两表都增加customer_id(虽然冗余，但是效果好)，查询时去除activity_order_info表
 ##**示例三**
+<<<<<<< HEAD
 #### ***更改前：***
  ![图一](./images/image5.png)
 #### ***更改后：***
  ![图二](./images/image6.png)
+=======
+#### **更改前：**
+  ![图一](./images/image5.png)
+#### **更改后：**
+  ![图二](./images/image6.png)
+>>>>>>> ddf71c366d3020fbfd864b40256c8ed163672b0e
   
 ###### 通过这两张图明显可以看到：两张图都使用了java8的stream，使用stream可以简化统计、简化查询，
   1. 第一张图罗列了stream的一般使用；
