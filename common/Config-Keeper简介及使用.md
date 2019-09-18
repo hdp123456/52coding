@@ -80,7 +80,7 @@ suixingpay:
      
      ```
     
-     * yml文件增加配置
+    * yml文件增加配置
      
       ```
       jasypt:
