@@ -6,6 +6,7 @@
 * [RabbitMQ延迟消息发送原理](rabbitmq/RabbitMQ延迟消息发送原理.md)
 * [Redis延迟消息发送原理](redis/redis延迟消息发送原理.md)
 * [新乐走-登录流程](happygo/login/login.md)
+* [XXL-JOB简介及使用](common/XXL-JOB简介及使用.md)
 * [MySQL规范](mysql/readme.md)
 * [validator](validator/readme.md)
 * [Navicat破解教程](navicat/readme.md)
