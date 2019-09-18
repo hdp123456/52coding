@@ -7,8 +7,9 @@
 * [Consul简介](consul/readme.md)  
 * [支付宝App支付简介](alipay/alipay-app.md) 
 * [项目持续集成部署](deploy/deploy.md)
-* [RabbitMQ延迟消息发送原理](rabbitmq/RabbitMQ延迟消息发送原理.md)
-* [Redis延迟消息发送原理](redis/redis延迟消息发送原理.md)
+* 延迟消息发送原理
+  * [RabbitMQ延迟消息发送原理](rabbitmq/RabbitMQ延迟消息发送原理.md)
+  * [Redis延迟消息发送原理](redis/redis延迟消息发送原理.md)
 * [新乐走-登录流程](happygo/login/login.md)
 
 * 通用框架简介及使用
