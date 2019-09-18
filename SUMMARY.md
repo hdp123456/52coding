@@ -12,7 +12,7 @@
 * [新乐走-登录流程](happygo/login/login.md)
 
 * 通用框架简介及使用
-  * * [XXL-JOB简介及使用](common/XXL-JOB简介及使用.md)
+  * [XXL-JOB简介及使用](common/XXL-JOB简介及使用.md)
 
 ## 胡文亮
 
