@@ -36,7 +36,6 @@ suixingpay:
 
 * 读取远程配置中心配置。
 
-* 通过读取远程配置中心配置。（示例如下)
 ```
 
  @Value("${alipay.app_id:}")
@@ -91,6 +90,7 @@ suixingpay:
       ```
       
     * 对配置加密
+    
     ```
       public static void main(String[] args) {
               BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
