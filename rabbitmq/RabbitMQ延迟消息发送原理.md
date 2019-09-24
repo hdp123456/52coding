@@ -117,8 +117,13 @@
                  });
 ```
 
-## 五、其他
-### 5.1 链接推荐
+## 五、注意事项
+### 5.1 
+鉴于转发延迟消息的队列(ttl队列)，不按设置的延迟时间发送（rabbitmq bug）。
+需要延迟的发送消息的任务，都单独配置自己的ttl,自己消费自己的延迟消息 。
+
+## 六、其他
+### 6.1 链接推荐
 * [RabbitMQ延迟消息发送原理分析](https://www.cnblogs.com/haoxinyue/p/6613706.html)
 * [RabbitMQ延迟消息发送技术实现](https://www.jianshu.com/p/b74a14c7f31d)
 
