@@ -15,6 +15,7 @@
 * 通用框架简介及使用
   * [XXL-JOB简介及使用](common/XXL-JOB简介及使用.md)
   * [Config-Keeper简介及使用](common/Config-Keeper简介及使用.md)
+  * [Yearning-go简介及使用](common/Yearning-go简介及使用.md)
 
 ## 胡文亮
 
