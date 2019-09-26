@@ -48,74 +48,18 @@
   x-dead-letter-routing-key
 ```
 
-#### 4.2 声明Queue1
+#### 4.2 声明ttl队列和实际业务消费者队列
 
-```
-    @Bean
-    public Queue messageQueue() {
-        return new Queue(RabbitMqDLXQueueEnum.MESSAGE_QUEUE.getName());
-    }
+![](./images/2.png)
 
-    @Bean
-    DirectExchange messageDirect() {
-        return (DirectExchange) ExchangeBuilder
-            .directExchange(RabbitMqDLXQueueEnum.MESSAGE_QUEUE.getExchange())
-            .durable(true)
-            .build();
-    }
-    
-    @Bean
-      Binding messageBinding(DirectExchange messageDirect, Queue messageQueue) {
-          return BindingBuilder
-              .bind(messageQueue)
-              .to(messageDirect)
-              .with(RabbitMqDLXQueueEnum.MESSAGE_QUEUE.getRouteKey());
-      }
-    
-```
+#### 4.3 监听实际业务消费者队列
 
-#### 4.3 Queue2
-
-```
-   Queue messageTtlQueue() {
-       return QueueBuilder
-           .durable(RabbitMqDLXQueueEnum.MESSAGE_TTL_QUEUE.getName())
-           // 配置到期后转发的交换
-           .withArgument("x-dead-letter-exchange",
-               RabbitMqDLXQueueEnum.MESSAGE_QUEUE.getExchange())
-           // 配置到期后转发的路由键
-           .withArgument("x-dead-letter-routing-key",
-               RabbitMqDLXQueueEnum.MESSAGE_QUEUE.getRouteKey())
-           .build();
-   }
-   
-   @Bean
-    DirectExchange messageTtlDirect() {
-        return (DirectExchange) ExchangeBuilder
-            .directExchange(RabbitMqDLXQueueEnum.MESSAGE_TTL_QUEUE.getExchange())
-            .durable(true)
-            .build();
-    }
-    @Bean
-      public Binding messageTtlBinding(Queue messageTtlQueue, DirectExchange messageTtlDirect) {
-          return BindingBuilder
-              .bind(messageTtlQueue)
-              .to(messageTtlDirect)
-              .with(RabbitMqDLXQueueEnum.MESSAGE_TTL_QUEUE.getRouteKey());
-      }
-```
+![](./images/3.png)
 
 #### 4.4 延迟消息发送
-```
-  String msg = "hello";
-  String exchange = RabbitMqDLXQueueEnum.MESSAGE_TTL_QUEUE.getExchange();
-  String routingkey = RabbitMqDLXQueueEnum.MESSAGE_TTL_QUEUE.getRouteKey();
-  rabbitTemplate.convertAndSend(exchange, routingkey, msg, message -> {
-                     // 设置延迟毫秒值=delayTime*1000
-                     message.getMessageProperties().setExpiration(String.valueOf(delayTime * 1000));
-                     return message;
-                 });
-```
+
+![](./images/4.png)
+                 
 
 ## 五、注意事项
 鉴于转发延迟消息的队列(ttl队列)，不按设置的延迟时间发送（rabbitmq bug）。
