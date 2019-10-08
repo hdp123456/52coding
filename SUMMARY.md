@@ -2,6 +2,10 @@
 
 * [前言](README.md)
 
+## 胡东坡
+
+* [乐走bug分享](happygo/bug/bugShare.md)
+
 ## 刘晓伟
 
 * [Consul简介](consul/readme.md)  
@@ -33,8 +37,6 @@
 * [HTTPS](https/https原理分析篇.md) 
 * [CodeReview](codeReview/readme.md)
 
-## bug分享
-* [乐走bug分享](happygo/bug/bugShare.md)
 
 
 
