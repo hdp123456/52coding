@@ -30,5 +30,14 @@
 ![](./images/3.png)
 
 ## 三、胡海清  2019年x月x日 00:00:00
+ 
+## 四、胡文亮  2019年10月9日14:08:32
 
-## 四、胡文亮  2019年x月x日 00:00:00
+### 1.1 bug1: 使用BigDecimal除法
+
+* 做数学计算时,设置保留位数未正确使用divide方法为正确使用,导致【java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result】异常抛出。
+
+### 1.2 bug2: 使用JDK8 Stream流对数据进行分组 
+
+* 使用JDK8 Stream流进行分组,数据集分成HashMap进行遍历取值使用Get方法为考虑HashMap的keySet集合未包含目标Key导致空指针(NPE)异常。 
+
