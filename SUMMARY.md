@@ -27,6 +27,7 @@
 * [validator](validator/readme.md)
 * [Navicat破解教程](navicat/readme.md)
 * [新乐走-运动收益](happygo/runReward/reademe.md)
+* [rabbitMQ](rabbitmq/rabbitMQ.md)
 
 ## 窦经纬
 
