@@ -2,7 +2,9 @@
     2020年1月9日10:04:33 胡韵
 
 ## 1. rabbitMQ 是什么？ 
+
 RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件)。AMQP(Advanced Message Queuing Protocol) , 一个提供统一消息服务的应用层标准高级消息队列协议,是应用层协议的一个开放标准,为面向消息的中间件设计, RocketMQ,ActiveMQ， ZeroMQ, Kafaka, 等消息队列都是AMQP协议的实现。
+
 ![rabbitMQ](./image/0.png)
 
 ## 2. rabbitMQ 名词解析
@@ -21,24 +23,35 @@ RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软�
 * key.* 只能匹配到 key.123
 ![topic](./image/3.png)
 * **headers message：** headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。
+
 ![headers](./image/4.png)
 
 ## 4.延时消息(多情景)
+
 * **TTL:** 
+
 ![TTL](./image/5.png)
+
+
 * **死信队列:** 死信队列：DLX, Dead-letter-Exchange;利用DLX ,当消息在一个队列中变成死信(dead message) 之后， 他能被冲新publish到另一个Exchange, 这个exchange 就是DLX
+
 ![DLX](./image/6.png)
 
 ### 4.1 实现方式一：给队列设置消息过期时间
+
 * 只要给队列设置x-message-ttl 参数，就设定了该队列所有消息的存活时间，时间单位是毫秒，值必须大于等于0
 RabbitMQ保证死消息（在队列中的时间超过设定的TTL时间）不会被消费者获得，同时会尽快删除死的消费者。
 消息不会在消费者的缓冲区中过期，也就是说，只要队列在消息过期前将消息推送给消费者，消费者就一定能处理到这条消息。
 重新入队（例如被取消确认或者信道关闭或拒绝并重新入队）的消息的过期时间保留初始值，即不刷新过期时间。
+
 ![Queue](./image/7.png)
 
 ### 4.2 实现方式二：为单条消息设置TTL
+
 * **Message设置过期时间：**
+
 ![Message](./image/8.png)
+
 * 虽然 consumer 从来看不到过期的 message ，但是在过期 message 到达 queue 的头部时确实会被真正的丢弃（或者 dead-lettered ）。当对每一个 queue 设置了 TTL 值时不会产生任何问题，因为过期的 message 总是会出现在 queue 的头部。当对每一条 message 设置了 TTL 时，过期的 message 可能会排队于未过期 message 的后面，直到这些消息被 consume 到或者过期了。在这种情况下，这些过期的 message 使用的资源将不会被释放，且会在 queue 统计信息中被计算进去（例如，queue 中存在的 message 的数量）。
 对于第一种设置队列TTL属性的方法，一旦消息过期，就会从队列中抹去，而第二种方法里，即使消息过期，也不会马上从队列中抹去，因为每条消息是否过期时在即将投递到消费者之前判定的，为什么两者得处理方法不一致？因为第一种方法里，队列中已过期的消息肯定在队列头部，RabbitMQ只要定期从队头开始扫描是否有过期消息即可，而第二种方法里，每条消息的过期时间不同，如果要删除所有过期消息，势必要扫描整个队列，所以不如等到此消息即将被消费时再判定是否过期，如果过期，再进行删除。
 
