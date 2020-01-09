@@ -63,6 +63,7 @@ RabbitMQ保证死消息（在队列中的时间超过设定的TTL时间）不会
 * 虽然 consumer 从来看不到过期的 message ，但是在过期 message 到达 queue 的头部时确实会被真正的丢弃（或者 dead-lettered ）。当对每一个 queue 设置了 TTL 值时不会产生任何问题，因为过期的 message 总是会出现在 queue 的头部。当对每一条 message 设置了 TTL 时，过期的 message 可能会排队于未过期 message 的后面，直到这些消息被 consume 到或者过期了。在这种情况下，这些过期的 message 使用的资源将不会被释放，且会在 queue 统计信息中被计算进去（例如，queue 中存在的 message 的数量）。
 对于第一种设置队列TTL属性的方法，一旦消息过期，就会从队列中抹去，而第二种方法里，即使消息过期，也不会马上从队列中抹去，因为每条消息是否过期时在即将投递到消费者之前判定的，为什么两者得处理方法不一致？因为第一种方法里，队列中已过期的消息肯定在队列头部，RabbitMQ只要定期从队头开始扫描是否有过期消息即可，而第二种方法里，每条消息的过期时间不同，如果要删除所有过期消息，势必要扫描整个队列，所以不如等到此消息即将被消费时再判定是否过期，如果过期，再进行删除。
 
+
 ## 五、参考资料
 * [rabbitMQ官网](https:././www.rabbitmq.com./getstarted.html)
 * [RabbitMQ消息超时时间、队列消息超时时间、队列超时时间](https:././blog.csdn.net./liu0808./article./details./81356552)
