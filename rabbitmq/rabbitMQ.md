@@ -14,14 +14,22 @@ RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软�
 * **queue:**        [队列用于储存消息]
 
 ## 3. Exchange Types(交换机类型)
+
 * **fanout message：** 广播模式，fanout类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中，所以不管你的生产者端的bingding key 和 消费者端的routing key。
+
 ![广播模式](./image/1.png)
+
 * **direct message：** direct类型的Exchange路由规则也很简单，它会把消息路由到那些binding key与routing key完全匹配的Queue中, routing(binding) key 最大长度 255 bytes
+
 ![direct](./image/2.png)
+
 * **topic message：** direct message 是 binding key == routing key, topic message是like, 其中routing key中可以带 * 和 # 来做模糊匹配， “*”用于匹配一个单词，“#”用于0~N个单词.
+
 * key.# 能够匹配到 key.123.234.345.456  
 * key.* 只能匹配到 key.123
+
 ![topic](./image/3.png)
+
 * **headers message：** headers类型的Exchange不依赖于routing key与binding key的匹配规则来路由消息，而是根据发送的消息内容中的headers属性进行匹配。
 
 ![headers](./image/4.png)
